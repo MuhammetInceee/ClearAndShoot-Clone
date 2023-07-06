@@ -7,9 +7,9 @@ using UnityEngine;
 public class GateBase : MonoBehaviour
 {
     private static readonly int Hit = Animator.StringToHash("Hit");
-
     
     [SerializeField] private TextMeshProUGUI buffValueText;
+    [SerializeField] private bool hasTween;
     
     public Transform playerTr;
     public float buffValue;
@@ -21,30 +21,21 @@ public class GateBase : MonoBehaviour
     private Material _gateMaterial;
     
     [Header("Buff Values")]
-    [EnumToggleButtons]
-    [SerializeField] private BuffTypes buffTypes;
+    [EnumToggleButtons, SerializeField] private BuffTypes buffTypes;
     private BuffType buffType => new(buffTypes);
-    
     [Header("Movement Values")]
-    [EnumToggleButtons]
-    [SerializeField] private MovementTypes movementTypes;
+    [EnumToggleButtons, SerializeField] private MovementTypes movementTypes;
     [ShowIf("@this.movementTypes == MovementTypes.horizontal || this.movementTypes == MovementTypes.both")]
     public GateHorizontalMovementSO horizontal;
     [ShowIf("@this.movementTypes == MovementTypes.vertical || this.movementTypes == MovementTypes.both")]
     public GateVerticalMovementSO vertical;
 
+    [ShowIf("hasTween"), SerializeField] private Collider tweenCollider;
     private MovementType movementType => new(movementTypes, horizontal, vertical);
 
-    private void Awake()
-    {
-        InitVariables();
-    }
-
-    private void Update()
-    {
-        movementType.update?.Invoke(this);
-    }
-
+    private void Awake() => InitVariables();
+    private void Update() => movementType.update?.Invoke(this);
+    
     private void InitVariables()
     {
         StartPos = transform.position;
@@ -58,6 +49,12 @@ public class GateBase : MonoBehaviour
         if (other.TryGetComponent(out Bullet bullet))
         {
             BulletTrigger(other, bullet);
+        }
+
+        else if (other.TryGetComponent(out PlayerCollision playerCollision))
+        {
+            tweenCollider.enabled = false;
+            //TODO Gateden gelen upgrade alınacak burada
         }
     }
 
@@ -81,13 +78,13 @@ public class BuffType
     internal static readonly BuffType fireRate = new(BuffTypes.fireRate);
     internal static readonly BuffType damage = new(BuffTypes.damage);
 
-    private readonly BuffTypes _buffTypes;
+    private readonly BuffTypes buffTypes;
     internal BuffType(BuffTypes buffTypes)
     {
-        this._buffTypes = buffTypes;
+        this.buffTypes = buffTypes;
     } 
 
-    internal string name => _buffTypes switch
+    internal string name => buffTypes switch
     {
         BuffTypes.fireRate => "Fire Rate",
         BuffTypes.damage => "Damage"

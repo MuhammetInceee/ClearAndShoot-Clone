@@ -9,6 +9,8 @@ namespace PaintIn3D
 	[AddComponentMenu(P3dCommon.ComponentHitMenuPrefix + "Hit Between")]
 	public class P3dHitBetween : MonoBehaviour
 	{
+		
+		
 		public enum PhaseType
 		{
 			Update,
@@ -38,6 +40,8 @@ namespace PaintIn3D
 			TrianglesIn3D = 30
 		}
 
+		public GameObject HitObj{set { hitObj = value; }get { return hitObj; }} [SerializeField] private GameObject hitObj;
+		
 		/// <summary>Where in the game loop should this component hit?</summary>
 		public PhaseType PaintIn { set { paintIn = value; } get { return paintIn; } } [SerializeField] private PhaseType paintIn;
 
@@ -183,6 +187,8 @@ namespace PaintIn3D
 				// Hit 3D?
 				if (Physics.Raycast(ray, out hit3D, maxDistance, layers) == true && (hit2D.collider == null || hit3D.distance < hit2D.distance))
 				{
+					hitObj = hit3D.collider.gameObject;
+					
 					CalcHitData(hit3D.point, hit3D.normal, ray, out finalPosition, out finalRotation);
 
 					fraction = (hit3D.distance + offset) / maxDistance;
