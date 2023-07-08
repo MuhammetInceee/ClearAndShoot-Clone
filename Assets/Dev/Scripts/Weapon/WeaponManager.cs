@@ -1,15 +1,42 @@
+using PaintIn3D;
 using UnityEngine;
+
+#pragma warning disable CS8524 // The switch expression does not handle some values of its input type (it is not exhaustive) involving an unnamed enum value.
 
 public class WeaponManager : MonoBehaviour
 {
+    private const float CleanThreshold = 0.4f;
+
+    private P3dChannelCounter _counter;
+    private bool _isReady;
+    
     [SerializeField] private WeaponFeatures weaponFeatures;
     [SerializeField] private WeaponTypes weaponTypes;
 
     internal WeaponType type => new(weaponTypes, weaponFeatures);
-    
+
+    public int weaponLevel;
+
+    private void Awake() => _counter = GetComponent<P3dChannelCounter>();
+
+    public void IsClean()
+    {
+        if (_counter.RatioA < CleanThreshold || _isReady) return;
+
+        _isReady = true;
+        
+        //TODO Object Collect Mechanic 
+        var tweenMove = transform.TweenMove(Vector3.forward, Vector3.zero, 1f, () =>
+        {
+            this.enabled = false;
+        });
+        StartCoroutine(tweenMove);
+
+
+    }
 }
 
-public enum WeaponTypes{grenade, hammer, knife, p90, pistol}
+public enum WeaponTypes {grenade,hammer,knife,p90,pistol }
 
 public class WeaponType
 {
@@ -36,7 +63,7 @@ public class WeaponType
         WeaponTypes.p90 => weaponFeatures.fireRate,
         WeaponTypes.pistol => weaponFeatures.fireRate
     };
-    
+
     internal float damage => weaponTypes switch
     {
         WeaponTypes.grenade => weaponFeatures.damage,

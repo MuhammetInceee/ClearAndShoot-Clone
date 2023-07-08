@@ -1,0 +1,11 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class GameManager : Singleton<GameManager>
+{
+    public GameStates gameStates;
+}
+
+public enum GameStates{Wait, Clean, Shoot}
