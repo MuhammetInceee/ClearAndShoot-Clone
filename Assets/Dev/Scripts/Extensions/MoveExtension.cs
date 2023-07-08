@@ -195,8 +195,8 @@ public static class MoveExtension
             yield return null;
         }
 
-        transform.position = endPos;
-        transform.eulerAngles = eulerAngles;
+        transform.localPosition = endPos;
+        transform.localEulerAngles = eulerAngles;
         
         onComplete.Invoke();
     }

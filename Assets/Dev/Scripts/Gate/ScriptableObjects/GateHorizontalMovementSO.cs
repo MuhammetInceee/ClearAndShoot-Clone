@@ -7,6 +7,7 @@ public class GateHorizontalMovementSO : ScriptableObject
     [SerializeField] private float leftBorder;
     [SerializeField] private float rightBorder;
     [SerializeField] private float speed;
+    [SerializeField] private float triggerValue;
     
     public Action<GateBase> update;
     
@@ -16,7 +17,7 @@ public class GateHorizontalMovementSO : ScriptableObject
     {
         update = (gateManager) =>
         {
-            if(Vector3.Distance(gateManager.playerTr.position, gateManager.gameObject.transform.position) < 10f) _isTriggered = true;
+            if(Vector3.Distance(gateManager.playerTr.position, gateManager.gameObject.transform.position) < triggerValue) _isTriggered = true;
             if(!_isTriggered) return;
             
             var currentPos = gateManager.gameObject.transform.position;

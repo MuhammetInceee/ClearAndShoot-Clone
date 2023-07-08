@@ -49,12 +49,13 @@ public class GateBase : MonoBehaviour
         if (other.TryGetComponent(out Bullet bullet))
         {
             BulletTrigger(other, bullet);
+            bullet.GetBackPool();
         }
 
         else if (other.TryGetComponent(out PlayerCollision playerCollision))
         {
-            tweenCollider.enabled = false;
-            //TODO Gateden gelen upgrade alınacak burada
+            if(tweenCollider != null) tweenCollider.enabled = false;
+            playerCollision.GateHit(buffTypes, buffValue);
         }
     }
 

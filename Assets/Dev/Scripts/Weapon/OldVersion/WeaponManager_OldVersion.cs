@@ -3,7 +3,7 @@ using UnityEngine;
 
 #pragma warning disable CS8524 // The switch expression does not handle some values of its input type (it is not exhaustive) involving an unnamed enum value.
 
-public class WeaponManager : MonoBehaviour
+public class WeaponManager_OldVersion : MonoBehaviour
 {
     private const float CleanThreshold = 0.4f;
 
@@ -19,14 +19,15 @@ public class WeaponManager : MonoBehaviour
 
     private void Awake() => _counter = GetComponent<P3dChannelCounter>();
 
-    public void IsClean()
+    public void Clear(Transform player)
     {
         if (_counter.RatioA < CleanThreshold || _isReady) return;
 
         _isReady = true;
         
         //TODO Object Collect Mechanic 
-        var tweenMove = transform.TweenMove(Vector3.forward, Vector3.zero, 1f, () =>
+        transform.SetParent(player);
+        var tweenMove = transform.TweenLocalMove(Vector3.zero, Vector3.zero, 1f, () =>
         {
             this.enabled = false;
         });
@@ -74,9 +75,9 @@ public class WeaponType
     };
 }
 
-[System.Serializable]
 public struct WeaponFeatures
 {
     public float fireRate;
     public float damage;
 }
+

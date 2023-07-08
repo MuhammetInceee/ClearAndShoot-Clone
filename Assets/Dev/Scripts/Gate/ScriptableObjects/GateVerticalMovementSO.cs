@@ -6,9 +6,11 @@ public class GateVerticalMovementSO : ScriptableObject
 {
     [SerializeField] private float duration;
     [SerializeField] private float moveDistance;
+    [SerializeField] private float triggerValue;
+    
     public Action<GateBase> update;
 
-    private float startTime;
+    private float _startTime;
 
     public GateVerticalMovementSO()
     {
@@ -16,16 +18,15 @@ public class GateVerticalMovementSO : ScriptableObject
         
         update = (gateManager) =>
         {
-            if(Vector3.Distance(gateManager.playerTr.position, gateManager.gameObject.transform.position) < 10f && !isTriggered)
+            if(Vector3.Distance(gateManager.playerTr.position, gateManager.gameObject.transform.position) < triggerValue && !isTriggered)
             {
                 isTriggered = true;
-                startTime = Time.time;
+                _startTime = Time.time;
             }
             if(!isTriggered) return;
             
-            var elapsedTime = Time.time - startTime;
+            var elapsedTime = Time.time - _startTime;
             var currentPos = gateManager.gameObject.transform.position;
-            // var targetZ = Mathf.MoveTowards(gateManager.startPos.z, gateManager.startPos.z + moveDistance, duration * Time.deltaTime);
             var t = elapsedTime / duration;
             
             var targetPos = Vector3.Lerp(gateManager.StartPos, gateManager.StartPos + (Vector3.forward * moveDistance), t);
