@@ -14,9 +14,9 @@ public class Bullet : MonoBehaviour
         if (_parent == null) _parent = transform.parent;
         _startTime = Time.time;
     }
-    private void FixedUpdate()
+    private void Update()
     {
-        var movement = Vector3.forward * (5 * Time.fixedDeltaTime);
+        var movement = Vector3.forward * (5 * Time.deltaTime);
         transform.Translate(movement);
 
         if (Time.time >= _startTime + BulletLifeTime) GetBackPool();
@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
         var transform1 = transform;
         
         transform1.position = Vector3.zero;
-        gameObject.SetActive(false);
         transform1.SetParent(_parent);
+        gameObject.SetActive(false);
     }
 }

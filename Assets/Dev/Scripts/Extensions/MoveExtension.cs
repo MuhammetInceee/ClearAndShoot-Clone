@@ -125,7 +125,7 @@ public static class MoveExtension
             yield return null;
         }
 
-        transform.position = endValue;
+        transform.localPosition = endValue;
     }
     
     public static IEnumerator TweenLocalMove(this Transform transform, Vector3 endPos, Vector3 eulerAngles,float duration)

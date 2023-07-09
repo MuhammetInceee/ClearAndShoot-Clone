@@ -27,7 +27,7 @@ public class PlayerMovementController : MonoBehaviour
     private void VerticalMovement()
     {
         _movement = new Vector3(0f, 0f, verticalSpeed * Time.deltaTime);
-        transform.Translate(-_movement);
+        transform.Translate(_movement);
     }
     
     private void FingerDown() => _firstMousePosition = Input.mousePosition;

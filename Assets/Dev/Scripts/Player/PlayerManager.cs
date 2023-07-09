@@ -11,6 +11,10 @@ public class PlayerManager : MonoBehaviour
 
     public int currentCleanLevel;
     public List<GameObject> weaponList;
+    
+    public Transform firstTr;
+    public float defX;
+    public float defZ;
 
 
     private void Awake()
