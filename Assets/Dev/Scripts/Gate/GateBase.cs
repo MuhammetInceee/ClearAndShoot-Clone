@@ -31,10 +31,14 @@ public class GateBase : MonoBehaviour
     public GateVerticalMovementSO vertical;
 
     [ShowIf("hasTween"), SerializeField] private Collider tweenCollider;
-    private MovementType movementType => new(movementTypes, horizontal, vertical);
+    private MovementType _movementType;
 
-    private void Awake() => InitVariables();
-    private void Update() => movementType.update?.Invoke(this);
+    private void Awake()
+    {
+        _movementType =  new MovementType(movementTypes, horizontal, vertical);
+        InitVariables();
+    }
+    private void Update() => _movementType.update?.Invoke(this);
     
     private void InitVariables()
     {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
@@ -24,5 +25,17 @@ public class UIManager : Singleton<UIManager>
         tapToPlayScreen.SetActive(false);
         gameScreen.SetActive(true);
         _gameManager.gameStates = GameStates.Clean;
+    }
+    
+    public void RestartGameViaSceneLoad()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    
+        
+    public void OpenFinishRect()
+    {
+        gameScreen.SetActive(false);
+        levelEndScreen.SetActive(true);
     }
 }
