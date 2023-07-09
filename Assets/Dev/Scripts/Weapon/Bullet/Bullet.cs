@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        var movement = transform.forward * (5 * Time.fixedDeltaTime);
+        var movement = Vector3.forward * (5 * Time.fixedDeltaTime);
         transform.Translate(movement);
 
         if (Time.time >= _startTime + BulletLifeTime) GetBackPool();

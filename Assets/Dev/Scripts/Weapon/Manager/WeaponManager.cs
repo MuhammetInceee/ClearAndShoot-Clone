@@ -8,6 +8,7 @@ using UnityEngine;
 [SuppressMessage("ReSharper", "Unity.PerformanceCriticalCodeInvocation")]
 public class WeaponManager : MonoBehaviour
 {
+    private static readonly int Shoot1 = Animator.StringToHash("Shoot");
     private const float CleanThreshold = 0.4f;
 
     private P3dChannelCounter _counter;
@@ -28,6 +29,7 @@ public class WeaponManager : MonoBehaviour
     [FoldoutGroup("WeaponFeatures") ,SerializeField] private float damage;
     [FoldoutGroup("WeaponFeatures")] public int weaponLevel;
     
+
     private void Awake()
     {
         GetReferences();
@@ -75,6 +77,8 @@ public class WeaponManager : MonoBehaviour
 
     private void Fire()
     {
+        print("aa");
+        _animator.SetTrigger(Shoot1);
         var targetObj = GetAvailableBullet();
         
         targetObj.transform.localPosition = firePos.localPosition;
@@ -99,6 +103,7 @@ public class WeaponManager : MonoBehaviour
         {
             _paintable.ClearAll(_texture.Texture, Color.white);
             playerManager.weaponList.Add(gameObject);
+            _animator.enabled = true;
         });
         StartCoroutine(tweenMove);
     }

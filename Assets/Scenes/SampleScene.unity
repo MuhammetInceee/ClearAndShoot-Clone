@@ -792,7 +792,7 @@ PrefabInstance:
     - target: {fileID: 3893396748096897233, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
       propertyPath: fireRate
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3893396748096897233, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
@@ -822,17 +822,17 @@ PrefabInstance:
     - target: {fileID: 7059780177329703128, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.14845337
+      value: -0.0890218
       objectReference: {fileID: 0}
     - target: {fileID: 7059780177329703128, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.034
+      value: 0.019
       objectReference: {fileID: 0}
     - target: {fileID: 7059780177329703128, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.7386446
+      value: 5.637956
       objectReference: {fileID: 0}
     - target: {fileID: 7059780177329703128, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
@@ -842,12 +842,12 @@ PrefabInstance:
     - target: {fileID: 7059780177329703128, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 7059780177329703128, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 7059780177329703128, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
@@ -867,7 +867,7 @@ PrefabInstance:
     - target: {fileID: 7059780177329703128, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 7382483734824558559, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
@@ -934,7 +934,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 118
   m_CollisionDetection: 0
 --- !u!114 &1240516831
 MonoBehaviour:
@@ -1536,7 +1536,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657148021}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 49d888fccda312242879469a73c2a2dc, type: 2}
   m_CullingMode: 0
