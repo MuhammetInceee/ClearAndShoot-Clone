@@ -102,15 +102,6 @@ public class WeaponManager : MonoBehaviour
 
         _isReady = true;
         
-        // transform.SetParent(playerManager.transform);
-        // var tweenMove = transform.TweenLocalMove(Vector3.zero, Vector3.zero, 0.5f, () =>
-        // {
-        //     _paintable.ClearAll(_texture.Texture, Color.white);
-        //     playerManager.weaponList.Add(gameObject);
-        //     _animator.enabled = true;
-        // });
-        // StartCoroutine(tweenMove);
-        
         playerManager.weaponList.Add(gameObject);
         transform.SetParent(playerManager.transform);
         
@@ -140,17 +131,10 @@ public class WeaponManager : MonoBehaviour
                 StartCoroutine(SetObjectsPos(objects[(lineCount * 3) + 1], localPosition + Vector3.back * (lineCount * defZ) + Vector3.right * defX / 2));
                 break;
         }
-
-        
     }
 
     private IEnumerator SetObjectsPos(GameObject go, Vector3 newPos)
     {
-        // while (Vector3.Distance(go.transform.localPosition, newPos) > 0.01f)
-        // {
-        //     go.transform.localPosition = Vector3.MoveTowards(go.transform.localPosition, newPos, Time.deltaTime * 20);
-        //     yield return null;
-        // }
         var tweenMove = go.transform.TweenLocalMove(newPos, Vector3.up * 180, 0.1f, () =>
         {
             _paintable.ClearAll(_texture.Texture, Color.white);

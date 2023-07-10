@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CleanLevelIncremental
   m_EditorClassIdentifier: 
   OnUpdateInterval: 5
-  _currentLevel: 10
+  _currentLevel: 0
   _isMax: 1
   IsInitilazed: 0
   valueIncreaseCurve:
@@ -22,17 +22,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
-      outSlope: 1
+      inSlope: 0.4
+      outSlope: 0.4
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 10
-      value: 10
-      inSlope: 1
-      outSlope: 1
+      value: 4
+      inSlope: 0.4
+      outSlope: 0.4
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -45,18 +45,18 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
+      value: 100
+      inSlope: 90
+      outSlope: 90
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 10
-      value: 10
-      inSlope: 1
-      outSlope: 1
+      value: 1000
+      inSlope: 90
+      outSlope: 90
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334

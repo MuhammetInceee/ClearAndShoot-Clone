@@ -3,7 +3,7 @@ using UnityEngine;
 public class SealedGate : GateBase
 {
     [SerializeField] private int sealHealth;
-    [SerializeField] private GameObject seal;
+    [SerializeField] private GateLock gateLock;
 
     protected override void BulletTrigger(Collider other, Bullet bullet)
     {
@@ -13,7 +13,7 @@ public class SealedGate : GateBase
             sealHealth--;
             if (sealHealth <= 0)
             {
-                seal.SetActive(false);
+                gateLock.Unlocked();
             }
         }
         else

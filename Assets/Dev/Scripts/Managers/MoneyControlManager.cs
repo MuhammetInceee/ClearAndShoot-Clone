@@ -9,11 +9,11 @@ public class MoneyControlManager : Singleton<MoneyControlManager>
 {
     public Action OnMoneyChange;
 
-    [SerializeField] private TextMeshProUGUI[] moneyTexts;
+    [SerializeField] private TextMeshProUGUI moneyText;
     public float currentMoney;
 
     [Header("Debug Mode")] public float money = 100;
-    public KeyCode keyCode = KeyCode.L;
+    [SerializeField] private KeyCode keyCode = KeyCode.L;
 
     private void Awake()
     {
@@ -33,24 +33,17 @@ public class MoneyControlManager : Singleton<MoneyControlManager>
         {
             return false;
         }
-        else
-        {
-            currentMoney += money;
-            SetPlayerPrefs();
-            MoneyTextUpdate();
-            OnMoneyChange?.Invoke();
-            return true;
-        }
+
+        currentMoney += money;
+        SetPlayerPrefs();
+        MoneyTextUpdate();
+        OnMoneyChange?.Invoke();
+        return true;
     }
 
     public bool CheckCanBuy(float money)
     {
-        if (currentMoney + money < 0)
-        {
-            return false;
-        }
-        else
-            return true;
+        return !(currentMoney + money < 0);
     }
 
     public void SetPlayerPrefs() => PlayerPrefs.SetFloat("Money", currentMoney);
@@ -77,12 +70,6 @@ public class MoneyControlManager : Singleton<MoneyControlManager>
 
     private void MoneyTextUpdate()
     {
-        foreach (var text in moneyTexts)
-        {
-            text.text = $"{FormatController.Format(currentMoney)}";
-            text.transform.localScale = Vector3.one;
-            // text.transform.DOKill();
-            // text.transform.DOPunchScale(Vector3.one * 0.25f, .25f, 1, 0.1f).SetEase(Ease.InOutBounce);
-        }
+        moneyText.text = $"{FormatController.Format(currentMoney)}";
     }
 }
