@@ -32,6 +32,9 @@ public class WeaponManager : MonoBehaviour
     [FoldoutGroup("WeaponFeatures") ,SerializeField] private float fireRate;
     [FoldoutGroup("WeaponFeatures") ,SerializeField] private float damage;
     [FoldoutGroup("WeaponFeatures")] public int weaponLevel;
+
+    private float FireRate => fireRate - _globalFireRate.CurrentValue - (_gameManager.fireRate / 100);
+    private float Damage => damage + _globalDamage.CurrentValue + (_gameManager.damage / 100);
     
 
     private void Awake()
@@ -74,7 +77,7 @@ public class WeaponManager : MonoBehaviour
     private void Shoot()
     {
         if(!_isReady || _gameManager.gameStates != GameStates.Shoot) return;
-        if(!(Time.time > _lastShootTime + fireRate)) return;
+        if(!(Time.time > _lastShootTime + FireRate)) return;
         
         Fire();
         _lastShootTime = Time.time;
@@ -84,7 +87,7 @@ public class WeaponManager : MonoBehaviour
     {
         _animator.SetTrigger(Shoot1);
         var targetObj = GetAvailableBullet();
-        
+        targetObj.GetComponent<Bullet>().damage = Damage;
         targetObj.transform.SetParent(null);
         targetObj.transform.position = firePos.position;
         targetObj.SetActive(true);

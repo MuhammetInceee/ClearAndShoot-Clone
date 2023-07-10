@@ -6,7 +6,14 @@ public class NormalGate : GateBase
     {
         base.BulletTrigger(other, bullet);
 
-        buffValue += bullet.damage;
+        buffValue += bullet.damage / 100;
         GateUpdater();
+    }
+
+    protected override void GateHit(PlayerCollision playerCollision)
+    {
+        base.GateHit(playerCollision);
+        
+        playerCollision.GateHitSuccessful(buffTypes, buffValue);
     }
 }

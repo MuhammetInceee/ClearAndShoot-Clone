@@ -1,26 +1,30 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using PaintIn3D;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [SuppressMessage("ReSharper", "Unity.PerformanceCriticalCodeInvocation")]
 public class PlayerManager : MonoBehaviour
 {
+    private readonly Keyframe _lineStartKey = new Keyframe(0.007263184f, 0.05267715f);
+    
     [SerializeField] private GameObject cleaner;
     [SerializeField] private LineRenderer cleanLine;
         
-    private Keyframe _lineStartKey = new Keyframe(0.007263184f, 0.05267715f);
     private P3dHitBetween _hitBetween;
     private P3dPaintDecal _paintDecal;
     private IncrementalData _clearLevel;
-
-    // public int currentCleanLevel;
+    
     public List<GameObject> weaponList;
     
     public Transform firstTr;
     public float defX;
     public float defZ;
 
+    [FoldoutGroup("WaterJetModels"), SerializeField] private GameObject level1;
+    [FoldoutGroup("WaterJetModels"), SerializeField] private GameObject level2;
+    [FoldoutGroup("WaterJetModels"), SerializeField] private GameObject level3;
 
     private void Awake()
     {
@@ -68,9 +72,51 @@ public class PlayerManager : MonoBehaviour
         var newCurve = new AnimationCurve();
         var lastKey = new Keyframe(1, 0.2f + _clearLevel.CurrentLevel * 0.09f);
         
-        newCurve.AddKey(_lineStartKey);
+        CheckWaterJetModel(newCurve);
+        
         newCurve.AddKey(lastKey);
 
         cleanLine.widthCurve = newCurve;
+    }
+
+    private void CheckWaterJetModel(AnimationCurve newCurve)
+    {
+        switch (_clearLevel.CurrentLevel)
+        {
+            case < 3:
+                JetModelChanger(1);
+                newCurve.AddKey(_lineStartKey);
+                break;
+            case >= 3 and < 7:
+                JetModelChanger(2);
+                newCurve.AddKey(_lineStartKey);
+                break;
+            case >= 7 and < 11:
+                JetModelChanger(3);
+                newCurve.AddKey(new Keyframe(0.007263184f, 0.23f));
+                break;
+        }
+    }
+
+    private void JetModelChanger(int level)
+    {
+        switch (level)
+        {
+            case 1:
+                level1.SetActive(true);
+                level2.SetActive(false);
+                level3.SetActive(false);
+                break;
+            case 2:
+                level1.SetActive(false);
+                level2.SetActive(true);
+                level3.SetActive(false);
+                break;
+            default:
+                level1.SetActive(false);
+                level2.SetActive(false);
+                level3.SetActive(true);
+                break;
+        }
     }
 }

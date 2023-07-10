@@ -21,7 +21,7 @@ public class GateBase : MonoBehaviour
     private Material _gateMaterial;
     
     [Header("Buff Values")]
-    [EnumToggleButtons, SerializeField] private BuffTypes buffTypes;
+    [EnumToggleButtons] public BuffTypes buffTypes;
     private BuffType buffType => new(buffTypes);
     [Header("Movement Values")]
     [EnumToggleButtons, SerializeField] private MovementTypes movementTypes;
@@ -59,9 +59,12 @@ public class GateBase : MonoBehaviour
         else if (other.TryGetComponent(out PlayerCollision playerCollision))
         {
             if(tweenCollider != null) tweenCollider.enabled = false;
-            playerCollision.GateHit(buffTypes, buffValue);
+            playerCollision.GateHitSuccessful(buffTypes, buffValue);
+            GateHit(playerCollision);
         }
     }
+
+    protected virtual void GateHit(PlayerCollision playerCollision) {}
 
     protected virtual void BulletTrigger(Collider other, Bullet bullet){}
 

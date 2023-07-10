@@ -130,7 +130,7 @@ public class ScriptableObjectPRO : ScriptableObject
         }
         catch (Exception e)
         {
-            Debug.LogError("It was not converted to SO pro, there is no SOMono in the scene.");
+            Debug.LogError("It was not converted to SO pro, there is no SOMono in the scene." + e);
             return false;
         }
     }

@@ -28,5 +28,6 @@ public class Bullet : MonoBehaviour
         transform1.position = Vector3.zero;
         transform1.SetParent(_parent);
         gameObject.SetActive(false);
+        damage = 0;
     }
 }

@@ -8,7 +8,6 @@ using UnityEngine;
 [CustomEditor(typeof(ScriptableObjectPRO), true)]
 public class SoPRODrawer : OdinEditor
 {
-    string status = "";
 
     public override void OnInspectorGUI()
     {
@@ -18,6 +17,7 @@ public class SoPRODrawer : OdinEditor
         }
         catch (Exception e)
         {
+            Debug.Log(e);
         }
 
 

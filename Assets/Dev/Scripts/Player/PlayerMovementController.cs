@@ -12,8 +12,13 @@ public class PlayerMovementController : MonoBehaviour
     private Vector2 _movementVector;
     private Vector3 _movement;
     private GameManager _gameManager;
+    private PlayerCollision _playerCollision;
     
-    private void Awake() => _gameManager = GameManager.Instance;
+    private void Awake()
+    {
+        _gameManager = GameManager.Instance;
+        _playerCollision = GetComponent<PlayerCollision>();
+    }
     
     private void Update()
     {
@@ -26,6 +31,8 @@ public class PlayerMovementController : MonoBehaviour
 
     private void VerticalMovement()
     {
+        if(!_playerCollision._canMove) return;
+        
         _movement = new Vector3(0f, 0f, verticalSpeed * Time.deltaTime);
         transform.Translate(_movement);
     }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IncomeIncremental
   m_EditorClassIdentifier: 
   OnUpdateInterval: 5
-  _currentLevel: 10
+  _currentLevel: 0
   _isMax: 1
   IsInitilazed: 0
   valueIncreaseCurve:
@@ -21,18 +21,18 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
+      value: 1
+      inSlope: 1.9
+      outSlope: 1.9
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 10
-      value: 10
-      inSlope: 1
-      outSlope: 1
+      value: 20
+      inSlope: 1.9
+      outSlope: 1.9
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -46,17 +46,17 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
-      outSlope: 1
+      inSlope: 100
+      outSlope: 100
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 10
-      value: 10
-      inSlope: 1
-      outSlope: 1
+      value: 1000
+      inSlope: 100
+      outSlope: 100
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
