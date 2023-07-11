@@ -1,14 +1,11 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
 {
     private GameManager _gameManager;
-    private Camera _mainCamera;
     
     [Header("GameScreens")] 
     [SerializeField] private GameObject tapToPlayScreen;
@@ -29,7 +26,6 @@ public class UIManager : Singleton<UIManager>
         tapToPlayTrigger.onClick.AddListener(TapToPlayTrigger);
         levelEndTrigger.onClick.AddListener(LevelManager.Instance.NextLevel);
         _gameManager = GameManager.Instance;
-        _mainCamera = Camera.main;
         levelText.text = $"Lv. {LevelManager.Instance.GetCurrentLevel()}";
     }
 
@@ -38,11 +34,6 @@ public class UIManager : Singleton<UIManager>
         tapToPlayScreen.SetActive(false);
         gameScreen.SetActive(true);
         _gameManager.gameStates = GameStates.Clean;
-    }
-    
-    public void RestartGameViaSceneLoad()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
     public void OpenFinishRect()
