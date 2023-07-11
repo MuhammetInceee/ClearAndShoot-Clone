@@ -1531,6 +1531,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6251246282097287309, guid: 69cdda36f46668841893bab2dbd28b0a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ca2cf2460051d334192da0791e78b654,
+        type: 3}
     - target: {fileID: 9152390218481122180, guid: 69cdda36f46668841893bab2dbd28b0a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2289,6 +2295,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6251246282097287309, guid: 69cdda36f46668841893bab2dbd28b0a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5ac2ed7aaf7b15b41b88b4c4b58c3923,
+        type: 3}
     - target: {fileID: 9152390218481122180, guid: 69cdda36f46668841893bab2dbd28b0a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2712,6 +2724,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6251246282097287309, guid: 69cdda36f46668841893bab2dbd28b0a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 32c0affa364ceb041af1887b9170ad7a,
+        type: 3}
     - target: {fileID: 9152390218481122180, guid: 69cdda36f46668841893bab2dbd28b0a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -3690,6 +3708,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6251246282097287309, guid: 69cdda36f46668841893bab2dbd28b0a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6b8818292f1b8dc448ad55ae22147c41,
+        type: 3}
     - target: {fileID: 9152390218481122180, guid: 69cdda36f46668841893bab2dbd28b0a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
