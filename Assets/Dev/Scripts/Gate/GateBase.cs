@@ -22,7 +22,8 @@ public class GateBase : MonoBehaviour
     
     [Header("Buff Values")]
     [EnumToggleButtons] public BuffTypes buffTypes;
-    private BuffType buffType => new(buffTypes);
+
+    private BuffType _buffType;
     [Header("Movement Values")]
     [EnumToggleButtons, SerializeField] private MovementTypes movementTypes;
     [ShowIf("@this.movementTypes == MovementTypes.horizontal || this.movementTypes == MovementTypes.both")]
@@ -36,6 +37,7 @@ public class GateBase : MonoBehaviour
     private void Awake()
     {
         _movementType =  new MovementType(movementTypes, horizontal, vertical);
+        _buffType = new BuffType(buffTypes);
         InitVariables();
     }
     private void Update() => _movementType.update?.Invoke(this);
@@ -72,7 +74,7 @@ public class GateBase : MonoBehaviour
     {
         var sign = (buffValue > 0) ? "+" : "";
         
-        buffValueText.text = $"{sign}{buffValue}\n{buffType.name}";
+        buffValueText.text = $"{sign}{buffValue}\n{_buffType.name}";
         _gateMaterial.color = buffValue <= 0 ? Color.red : Color.green;
         _animator.SetTrigger(Hit);
     }

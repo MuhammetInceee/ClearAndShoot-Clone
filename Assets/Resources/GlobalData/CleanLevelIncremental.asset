@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnUpdateInterval: 5
   _currentLevel: 0
-  _isMax: 1
+  _isMax: 0
   IsInitilazed: 0
   valueIncreaseCurve:
     serializedVersion: 2

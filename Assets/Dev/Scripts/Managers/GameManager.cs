@@ -1,8 +1,8 @@
 public class GameManager : Singleton<GameManager>
 {
-    public GameStates gameStates;
     // [SerializeField] private SaveableData saveableData;
-
+    public GameStates gameStates;
+    public PlateManager[] allPlates;
     public float fireRate;
     public float damage;
 
@@ -12,6 +12,11 @@ public class GameManager : Singleton<GameManager>
     //     fireRate = saveableData.fireRate;
     //     damage = saveableData.damage;
     // }
+
+    private void Awake()
+    {
+        allPlates = FindObjectsOfType<PlateManager>();
+    }
 
     internal void DamageUpdate(float value)
     {

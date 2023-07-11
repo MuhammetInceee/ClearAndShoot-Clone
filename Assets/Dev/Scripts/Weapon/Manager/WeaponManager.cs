@@ -10,7 +10,7 @@ using UnityEngine;
 public class WeaponManager : MonoBehaviour
 {
     private static readonly int Shoot1 = Animator.StringToHash("Shoot");
-    private const float CleanThreshold = 0.4f;
+    private const float CleanThreshold = 0.3f;
 
     private P3dChannelCounter _counter;
     private P3dPaintable _paintable;
@@ -19,6 +19,7 @@ public class WeaponManager : MonoBehaviour
     private Animator _animator;
     private IncrementalData _globalFireRate;
     private IncrementalData _globalDamage;
+    private IncrementalData _clearLevel;
     private bool _isReady;
     private float _lastShootTime = 0f;
 
@@ -42,6 +43,7 @@ public class WeaponManager : MonoBehaviour
         GetReferences();
         InitVariables();
         PoolInit();
+        
     }
 
     private void GetReferences()
@@ -57,6 +59,7 @@ public class WeaponManager : MonoBehaviour
     {
         _globalFireRate = Resources.Load<IncrementalData>("GlobalData/FireRateIncremental");
         _globalDamage = Resources.Load<IncrementalData>("GlobalData/DamageIncremental");
+        _clearLevel = Resources.Load<IncrementalData>("GlobalData/CleanLevelIncremental");
     }
 
     private void PoolInit()
@@ -101,14 +104,14 @@ public class WeaponManager : MonoBehaviour
 
     public void Clear(PlayerManager playerManager)
     {
+        print(_counter.RatioA);
         if (_counter.RatioA < CleanThreshold || _isReady) return;
-
-        _isReady = true;
         
         playerManager.weaponList.Add(gameObject);
         transform.SetParent(playerManager.transform);
         
         SetPoses(playerManager.weaponList, playerManager.firstTr, playerManager.defX, playerManager.defZ);
+        _isReady = true;
     }
     
     private void SetPoses(List<GameObject> objects, Transform firstTr, float defX, float defZ)
@@ -138,11 +141,18 @@ public class WeaponManager : MonoBehaviour
 
     private IEnumerator SetObjectsPos(GameObject go, Vector3 newPos)
     {
-        var tweenMove = go.transform.TweenLocalMove(newPos, Vector3.up * 180, 0.1f, () =>
+        var tweenMove = go.transform.TweenLocalMove(newPos, Vector3.up * 180, 0.4f, () =>
         {
             _paintable.ClearAll(_texture.Texture, Color.white);
             _animator.enabled = true;
+            go.transform.localScale = Vector3.one;
         });
         return tweenMove;
+    }
+
+    public bool Stackable()
+    {
+        var check = _clearLevel.CurrentLevel * 10 >= weaponLevel;
+        return check;
     }
 }

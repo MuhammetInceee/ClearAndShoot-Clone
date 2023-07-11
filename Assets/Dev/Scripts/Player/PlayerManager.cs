@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
     private P3dHitBetween _hitBetween;
     private P3dPaintDecal _paintDecal;
     private IncrementalData _clearLevel;
+    private GameManager _gameManager;
     
     public List<GameObject> weaponList;
     
@@ -37,6 +38,7 @@ public class PlayerManager : MonoBehaviour
         _hitBetween = cleaner.GetComponent<P3dHitBetween>();
         _paintDecal = cleaner.GetComponent<P3dPaintDecal>();
         _clearLevel = Resources.Load<IncrementalData>("GlobalData/CleanLevelIncremental");
+        _gameManager = GameManager.Instance;
     }
     
 
@@ -49,7 +51,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (_hitBetween.HitObj.TryGetComponent(out WeaponManager weaponManager))
         {
-            if (weaponManager.weaponLevel <= _clearLevel.CurrentLevel)
+            if (weaponManager.weaponLevel <= _clearLevel.CurrentLevel * 10)
             {
                 _paintDecal.Opacity = 1;
                 weaponManager.Clear(this);
@@ -66,6 +68,7 @@ public class PlayerManager : MonoBehaviour
 
     public void UpdateClearLevel()
     {
+        WeaponPlateControl();
         _paintDecal.Scale = new Vector3(1 + _clearLevel.CurrentValue, _paintDecal.Scale.y,
             _paintDecal.Scale.z);
         
@@ -117,6 +120,14 @@ public class PlayerManager : MonoBehaviour
                 level2.SetActive(false);
                 level3.SetActive(true);
                 break;
+        }
+    }
+
+    private void WeaponPlateControl()
+    {
+        foreach (var plate in _gameManager.allPlates)
+        {
+            plate.CheckAvailable();
         }
     }
 }
