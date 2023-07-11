@@ -79,7 +79,8 @@ public class WeaponManager : MonoBehaviour
 
     private void Shoot()
     {
-        if(!_isReady || _gameManager.gameStates != GameStates.Shoot) return;
+        //TODO Refactor this if block
+        if(!_isReady || (_gameManager.gameStates != GameStates.Shoot && _gameManager.gameStates != GameStates.LevelEnd)) return;
         if(!(Time.time > _lastShootTime + FireRate)) return;
         
         Fire();
@@ -104,50 +105,17 @@ public class WeaponManager : MonoBehaviour
 
     public void Clear(PlayerManager playerManager)
     {
-        print(_counter.RatioA);
         if (_counter.RatioA < CleanThreshold || _isReady) return;
         
         playerManager.weaponList.Add(gameObject);
         transform.SetParent(playerManager.transform);
         
-        SetPoses(playerManager.weaponList, playerManager.firstTr, playerManager.defX, playerManager.defZ);
-        _isReady = true;
-    }
-    
-    private void SetPoses(List<GameObject> objects, Transform firstTr, float defX, float defZ)
-    { 
-        var lineCount = objects.Count / 3;
-        var extraCount = objects.Count % 3;
-        var localPosition = firstTr.localPosition;
-
-        for (var i = 0; i < lineCount; i++)
-        {
-            StartCoroutine(SetObjectsPos(objects[(i * 3) + 0], localPosition + Vector3.back * (i * defZ)));
-            StartCoroutine(SetObjectsPos(objects[(i * 3) + 1], localPosition + Vector3.back * (i * defZ) + Vector3.left * defX));
-            StartCoroutine(SetObjectsPos(objects[(i * 3) + 2], localPosition + Vector3.back * (i * defZ) + Vector3.right * defX));
-        }
-
-        switch (extraCount)
-        {
-            case 1:
-                StartCoroutine(SetObjectsPos(objects[(lineCount * 3) + 0], localPosition + Vector3.back * (lineCount * defZ)));
-                break;
-            case 2:
-                StartCoroutine(SetObjectsPos(objects[(lineCount * 3) + 0], localPosition + Vector3.back * (lineCount * defZ) + Vector3.left * defX / 2));
-                StartCoroutine(SetObjectsPos(objects[(lineCount * 3) + 1], localPosition + Vector3.back * (lineCount * defZ) + Vector3.right * defX / 2));
-                break;
-        }
-    }
-
-    private IEnumerator SetObjectsPos(GameObject go, Vector3 newPos)
-    {
-        var tweenMove = go.transform.TweenLocalMove(newPos, Vector3.up * 180, 0.4f, () =>
+        playerManager.SetPoses(() =>
         {
             _paintable.ClearAll(_texture.Texture, Color.white);
             _animator.enabled = true;
-            go.transform.localScale = Vector3.one;
         });
-        return tweenMove;
+        _isReady = true;
     }
 
     public bool Stackable()

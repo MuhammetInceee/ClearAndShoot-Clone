@@ -18,7 +18,6 @@ public class PlayerCollision : MonoBehaviour
 
     internal void ShootStateChange()
     {
-        // _gameManager.gameStates = GameStates.Shoot;
         cleanerParent.SetActive(false);
     }
 

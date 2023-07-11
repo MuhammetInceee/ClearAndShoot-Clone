@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using PaintIn3D;
@@ -129,5 +131,46 @@ public class PlayerManager : MonoBehaviour
         {
             plate.CheckAvailable();
         }
+    }
+    
+    public void SetPoses(Action onComplete = null)
+    { 
+        var lineCount = weaponList.Count / 3;
+        var extraCount = weaponList.Count % 3;
+        var localPosition = firstTr.localPosition;
+
+        for (var i = 0; i < lineCount; i++)
+        {
+            StartCoroutine(SetObjectsPos(weaponList[(i * 3) + 0], localPosition + Vector3.back * (i * defZ), onComplete));
+            StartCoroutine(SetObjectsPos(weaponList[(i * 3) + 1], localPosition + Vector3.back * (i * defZ) + Vector3.left * defX, onComplete));
+            StartCoroutine(SetObjectsPos(weaponList[(i * 3) + 2], localPosition + Vector3.back * (i * defZ) + Vector3.right * defX, onComplete));
+        }
+
+        switch (extraCount)
+        {
+            case 1:
+                StartCoroutine(SetObjectsPos(weaponList[(lineCount * 3) + 0], localPosition + Vector3.back * (lineCount * defZ), onComplete));
+                break;
+            case 2:
+                StartCoroutine(SetObjectsPos(weaponList[(lineCount * 3) + 0], localPosition + Vector3.back * (lineCount * defZ) + Vector3.left * defX / 2, onComplete));
+                StartCoroutine(SetObjectsPos(weaponList[(lineCount * 3) + 1], localPosition + Vector3.back * (lineCount * defZ) + Vector3.right * defX / 2, onComplete));
+                break;
+        }
+    }
+    
+    private IEnumerator SetObjectsPos(GameObject go, Vector3 newPos, Action onComplete = null)
+    {
+        var tweenMove = go.transform.TweenLocalMove(newPos, Vector3.up * 180, 0.4f, () =>
+        {
+            go.transform.localScale = Vector3.one;
+            onComplete?.Invoke();
+        });
+        return tweenMove;
+    }
+
+    internal void NarrowWeapons()
+    {
+        defX -= 0.1f;
+        SetPoses();
     }
 }

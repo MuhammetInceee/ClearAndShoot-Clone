@@ -15,7 +15,15 @@ public class GameStateChanger : MonoBehaviour
     {
         if(toState == GameStates.Shoot)
             if (other.TryGetComponent(out PlayerCollision collision)) collision.ShootStateChange();
-        
+                
+        if(toState == GameStates.LevelEnd)
+        {
+            if (other.TryGetComponent(out PlayerManager playerManager))
+            {
+                print("asd");
+                playerManager.NarrowWeapons();
+            }
+        }
         _gameManager.gameStates = toState;
     }
 }

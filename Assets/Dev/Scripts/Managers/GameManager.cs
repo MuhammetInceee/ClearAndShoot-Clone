@@ -49,7 +49,7 @@ public class GameManager : Singleton<GameManager>
     // }
 }
 
-public enum GameStates{Wait, Clean, Shoot}
+public enum GameStates{Wait, Clean, Shoot, LevelEnd}
 
 // [Serializable]
 // public struct SaveableData
