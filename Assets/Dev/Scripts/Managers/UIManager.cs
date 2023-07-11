@@ -18,15 +18,19 @@ public class UIManager : Singleton<UIManager>
     
     [Header("UIElements")]
     [SerializeField] private Button tapToPlayTrigger;
+    [SerializeField] private Button levelEndTrigger;
     [SerializeField] private Transform moneyImage;
     [SerializeField] private GameObject moneySpritePrefab;
+    [SerializeField] private TextMeshProUGUI levelText;
 
 
     private void Awake()
     {
         tapToPlayTrigger.onClick.AddListener(TapToPlayTrigger);
+        levelEndTrigger.onClick.AddListener(LevelManager.Instance.NextLevel);
         _gameManager = GameManager.Instance;
         _mainCamera = Camera.main;
+        levelText.text = $"Lv. {LevelManager.Instance.GetCurrentLevel()}";
     }
 
     private void TapToPlayTrigger()

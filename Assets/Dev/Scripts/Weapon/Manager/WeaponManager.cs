@@ -94,6 +94,8 @@ public class WeaponManager : MonoBehaviour
         targetObj.GetComponent<Bullet>().damage = Damage;
         targetObj.transform.SetParent(null);
         targetObj.transform.position = firePos.position;
+        targetObj.transform.rotation = Quaternion.Euler(Vector3.zero);
+        targetObj.GetComponentInChildren<TrailRenderer>()?.Clear();
         targetObj.SetActive(true);
     }
 

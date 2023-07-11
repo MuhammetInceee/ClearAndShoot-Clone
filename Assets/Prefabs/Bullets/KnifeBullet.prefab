@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 6176915509351531857}
   - component: {fileID: 4789958962756913517}
   - component: {fileID: 4789958962756913514}
-  - component: {fileID: 4789958962756913515}
   - component: {fileID: -3389853447205836443}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: KnifeBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +100,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 102
   m_CollisionDetection: 0
 --- !u!64 &4789958962756913514
 MeshCollider:
@@ -117,26 +116,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6642714101394498179, guid: ad8ca4cbdeec7c74d9c71fa1565d09a5, type: 3}
---- !u!95 &4789958962756913515
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5672340483847775364}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d2f715a550344714c840523e35887bb7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &-3389853447205836443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,4 +128,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5cf783bc6f95b34cafaa5b903d88297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTypes: 2
+  bulletTypes: 0

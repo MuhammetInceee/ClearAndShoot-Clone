@@ -95,7 +95,8 @@ PrefabInstance:
     - target: {fileID: 1863706713, guid: 46c79c9f17c9095429b66178bdf74fe1, type: 3}
       propertyPath: bulletPrefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3240085151268905941, guid: 260de578f1c12684893716d51c607303,
+        type: 3}
     - target: {fileID: 1863706717, guid: 46c79c9f17c9095429b66178bdf74fe1, type: 3}
       propertyPath: cooldown
       value: -82.9365

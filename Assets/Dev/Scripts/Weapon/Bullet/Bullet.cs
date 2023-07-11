@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 #pragma warning disable CS8524 // The switch expression does not handle some values of its input type (it is not exhaustive) involving an unnamed enum value.
 
@@ -10,52 +11,65 @@ public class Bullet : MonoBehaviour
     private float _startTime;
     private Transform _parent;
     private BulletType _bulletType;
+    private TrailRenderer _trail;
+    private Rigidbody _rb;
+    private Quaternion _deltaRot;
     
     [SerializeField] private BulletTypes bulletTypes;
     
     private void OnEnable()
     {
-        _bulletType = new BulletType(bulletTypes);
+        _bulletType = new BulletType(bulletTypes, _rb, _deltaRot);
+        _rb = GetComponent<Rigidbody>();
         if (_parent == null) _parent = transform.parent;
         _startTime = Time.time;
+        _trail = transform.GetComponentInChildren<TrailRenderer>();
     }
-    private void Update()
+    private void FixedUpdate()
     {
-        transform.Translate(_bulletType.direction);
+        _bulletType.fixedUpdate.Invoke();
         if (Time.time >= _startTime + BulletLifeTime) GetBackPool();
     }
     internal void GetBackPool()
     {
         var transform1 = transform;
-        
-        transform1.position = Vector3.zero;
-        transform1.SetParent(_parent);
+        if(_trail != null) _trail.Clear();
         gameObject.SetActive(false);
+        transform1.SetParent(_parent);
         damage = 0;
     }
 }
 
-public enum BulletTypes{gun, hammer, knife, grenade}
+public enum BulletTypes{rotateable, stuck}
 
 public class BulletType
 {
-    internal static readonly BulletType gun = new(BulletTypes.gun);
-    internal static readonly BulletType hammer = new(BulletTypes.hammer);
-    internal static readonly BulletType knife = new(BulletTypes.knife);
-    internal static readonly BulletType grenade = new(BulletTypes.grenade);
+    internal static readonly BulletType rotateable = new(BulletTypes.rotateable, null, Quaternion.identity);
+    internal static readonly BulletType stuck = new(BulletTypes.stuck, null, Quaternion.identity);
 
     private readonly BulletTypes bulletTypes;
+    private readonly Rigidbody rb;
+    private Quaternion deltaRot;
 
-    internal BulletType(BulletTypes bulletTypes)
+    internal BulletType(BulletTypes bulletTypes, Rigidbody rb, Quaternion deltaRot)
     {
         this.bulletTypes = bulletTypes;
+        this.rb = rb;
+        this.deltaRot = deltaRot;
     }
 
-    internal Vector3 direction => bulletTypes switch
+    internal Action fixedUpdate => bulletTypes switch
     {
-        BulletTypes.gun => Vector3.forward * (5 * Time.deltaTime),
-        BulletTypes.hammer => Vector3.left * (5 * Time.deltaTime),
-        BulletTypes.knife => Vector3.left * (5 * Time.deltaTime),
-        BulletTypes.grenade => Vector3.down * (5 * Time.deltaTime),
+        BulletTypes.rotateable => () =>
+        {
+            deltaRot = Quaternion.Euler(Vector3.right * (1000 * Time.deltaTime));
+            rb.MovePosition(rb.position + Vector3.forward * (5 * Time.deltaTime));
+            rb.MoveRotation(rb.rotation * deltaRot);
+        },
+        
+        BulletTypes.stuck => () =>
+        {
+            rb.MovePosition(rb.position + Vector3.forward * (5 * Time.deltaTime));
+        } 
     };
 }

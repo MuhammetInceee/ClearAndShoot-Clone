@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 1158290963733018319}
   - component: {fileID: 1158290963733018312}
   - component: {fileID: 1158290963733018313}
-  - component: {fileID: 1158290963733018318}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HammerBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5cf783bc6f95b34cafaa5b903d88297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletTypes: 0
+  bulletTypes: 1
 --- !u!54 &1158290963733018312
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -114,7 +113,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 102
   m_CollisionDetection: 0
 --- !u!64 &1158290963733018313
 MeshCollider:
@@ -130,23 +129,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 586182733381143034, guid: b8625a60e1300f94887666dd45602c2a, type: 3}
---- !u!95 &1158290963733018318
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3240085151268905941}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1928cf449f3f9964faf9fe885de93481, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0

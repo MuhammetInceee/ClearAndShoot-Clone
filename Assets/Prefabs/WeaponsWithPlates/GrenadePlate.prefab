@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grenade
       objectReference: {fileID: 0}
+    - target: {fileID: 1827315366525818879, guid: a61fd66e67a937e42983fcdeb55c336b,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2220649386271991435, guid: a61fd66e67a937e42983fcdeb55c336b,
         type: 3}
       propertyPath: m_RootOrder
@@ -67,6 +72,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4284102462956457781, guid: a61fd66e67a937e42983fcdeb55c336b,
+        type: 3}
+      propertyPath: cooldown
+      value: -22.330004
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a61fd66e67a937e42983fcdeb55c336b, type: 3}
 --- !u!114 &1072734719669719583 stripped
@@ -75,12 +85,34 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 8712624598623967672}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7886913025906697609}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbbd10009bdff404492ee7012ee290dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7886913025906697609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1556702261233466417, guid: a61fd66e67a937e42983fcdeb55c336b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8712624598623967672}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &536990687
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7886913025906697609}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &8900920856507574636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -151,7 +183,7 @@ PrefabInstance:
     - target: {fileID: 8241447873004285446, guid: 4e8597d14752be241a189e2926298fa9,
         type: 3}
       propertyPath: m_Name
-      value: PlatesPack
+      value: GrenadePlate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e8597d14752be241a189e2926298fa9, type: 3}
