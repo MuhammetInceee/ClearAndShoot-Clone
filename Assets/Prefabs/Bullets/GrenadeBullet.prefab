@@ -114,6 +114,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletTypes: 1
+  trail: {fileID: 3285041088078562213}
+  rb: {fileID: 3847538101928392080}
 --- !u!54 &3847538101928392080
 Rigidbody:
   m_ObjectHideFlags: 0

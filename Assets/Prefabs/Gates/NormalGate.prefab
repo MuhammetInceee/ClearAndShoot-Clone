@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7232967721361680287}
   - component: {fileID: 7232967721361680284}
   - component: {fileID: 7232967721361680285}
-  - component: {fileID: 7232967721361680258}
   - component: {fileID: 7232967721361680286}
   - component: {fileID: 7232967721361680281}
+  - component: {fileID: 7344429780232724855}
   m_Layer: 0
   m_Name: NormalGate
   m_TagString: Untagged
@@ -88,20 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7232967721361680258
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7232967721361680259}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: abd77cd7058cdba4c9337e6003b34aa4, type: 2}
 --- !u!114 &7232967721361680286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,12 +101,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buffValueText: {fileID: 7232967722257384229}
+  hasTween: 0
   playerTr: {fileID: 0}
   buffValue: 2
   buffTypes: 0
   movementTypes: 0
   horizontal: {fileID: 11400000, guid: ba1bbee146261ce418d90a1fc7b5e9c5, type: 2}
   vertical: {fileID: 11400000, guid: 49fa5afa5b692e745be2b2b31f697fdd, type: 2}
+  tweenCollider: {fileID: 0}
 --- !u!95 &7232967721361680281
 Animator:
   serializedVersion: 4
@@ -141,6 +129,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &7344429780232724855
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7232967721361680259}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.5, y: 3.0300002, z: 0.5000002}
+  m_Center: {x: 0, y: 0.605, z: -0.00000004470349}
 --- !u!1 &7232967722257384235
 GameObject:
   m_ObjectHideFlags: 0

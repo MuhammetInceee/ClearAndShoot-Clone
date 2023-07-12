@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 1360347681325857233, guid: 4e8597d14752be241a189e2926298fa9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.43
       objectReference: {fileID: 0}
     - target: {fileID: 1360347681325857233, guid: 4e8597d14752be241a189e2926298fa9,
         type: 3}
@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 1360347681325857233, guid: 4e8597d14752be241a189e2926298fa9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.702
+      value: 8.99
       objectReference: {fileID: 0}
     - target: {fileID: 1360347681325857233, guid: 4e8597d14752be241a189e2926298fa9,
         type: 3}
@@ -107,6 +107,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4597893143543078727, guid: 4e8597d14752be241a189e2926298fa9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4662887039494823356, guid: 4e8597d14752be241a189e2926298fa9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5304783361081579782, guid: 4e8597d14752be241a189e2926298fa9,
         type: 3}
       propertyPath: m_LocalScale.z
@@ -121,6 +131,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P90Plate
+      objectReference: {fileID: 0}
+    - target: {fileID: 8575293087187979459, guid: 4e8597d14752be241a189e2926298fa9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e8597d14752be241a189e2926298fa9, type: 3}
@@ -145,14 +160,25 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3893396748096897233, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
-      propertyPath: weaponLevel
+      propertyPath: damage
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3893396748096897233, guid: 60269f93e3480de4bb12fd5cfaec32e6,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3893396748096897233, guid: 60269f93e3480de4bb12fd5cfaec32e6,
+        type: 3}
+      propertyPath: weaponLevel
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3893396748096897233, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
       propertyPath: bulletPrefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5871117730204786307, guid: 6e3d995006ef4cc459ee7e31f392db67,
+        type: 3}
     - target: {fileID: 7059780177329703128, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
       propertyPath: m_RootOrder
@@ -216,7 +242,7 @@ PrefabInstance:
     - target: {fileID: 7382483734824558559, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
       propertyPath: cooldown
-      value: -181.55972
+      value: -200.34402
       objectReference: {fileID: 0}
     - target: {fileID: 7688401054305915490, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}

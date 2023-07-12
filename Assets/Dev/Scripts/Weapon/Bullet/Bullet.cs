@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
+
 #pragma warning disable CS8524 // The switch expression does not handle some values of its input type (it is not exhaustive) involving an unnamed enum value.
 
 public class Bullet : MonoBehaviour
@@ -8,22 +10,19 @@ public class Bullet : MonoBehaviour
     
     internal float damage;
     
+    [SerializeField] private BulletTypes bulletTypes;
+    [SerializeField] private TrailRenderer trail;
+    [SerializeField] private Rigidbody rb;
+    
     private float _startTime;
     private Transform _parent;
-    private BulletType _bulletType;
-    private TrailRenderer _trail;
-    private Rigidbody _rb;
     private Quaternion _deltaRot;
-    
-    [SerializeField] private BulletTypes bulletTypes;
+    private BulletType _bulletType => new BulletType(bulletTypes, rb, _deltaRot);
     
     private void OnEnable()
     {
-        _bulletType = new BulletType(bulletTypes, _rb, _deltaRot);
-        _rb = GetComponent<Rigidbody>();
         if (_parent == null) _parent = transform.parent;
         _startTime = Time.time;
-        _trail = transform.GetComponentInChildren<TrailRenderer>();
     }
     private void FixedUpdate()
     {
@@ -33,7 +32,7 @@ public class Bullet : MonoBehaviour
     internal void GetBackPool()
     {
         var transform1 = transform;
-        if(_trail != null) _trail.Clear();
+        if(trail != null) trail.Clear();
         gameObject.SetActive(false);
         transform1.SetParent(_parent);
         damage = 0;

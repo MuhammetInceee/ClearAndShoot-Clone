@@ -1,3 +1,5 @@
+using System.Globalization;
+using TMPro;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
@@ -6,6 +8,7 @@ public class EnemyManager : MonoBehaviour
     
     [SerializeField] private float health;
     [SerializeField] private SkinnedMeshRenderer character;
+    [SerializeField] private TextMeshPro healthText;
     
     private Animator _animator;
     private Material _material;
@@ -29,9 +32,9 @@ public class EnemyManager : MonoBehaviour
     
     private void GetHit(float splitPosition)
     {
-        
         health -= splitPosition;
         _material.SetFloat(MaterialSlierName, health / 100);
+        healthText.text = health.ToString(CultureInfo.InvariantCulture);
     }
 
     private void Murdered()

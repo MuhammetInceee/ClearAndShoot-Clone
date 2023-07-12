@@ -10,6 +10,7 @@ public class LevelEndObjects : MonoBehaviour
     private Animator _animator;
     private GameManager _gameManager;
     private UIManager _uiManager;
+    private MoneyControlManager _moneyManager;
     
     [SerializeField] private TextMeshPro healthText;
     
@@ -20,6 +21,7 @@ public class LevelEndObjects : MonoBehaviour
         _animator = GetComponent<Animator>();
         _gameManager = GameManager.Instance;
         _uiManager = UIManager.Instance;
+        _moneyManager = MoneyControlManager.Instance;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -36,6 +38,7 @@ public class LevelEndObjects : MonoBehaviour
         {
             _gameManager.gameStates = GameStates.Wait;
             _uiManager.OpenFinishRect();
+            _moneyManager.ChangeMoney(250);
         }
     }
 

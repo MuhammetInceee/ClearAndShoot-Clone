@@ -15,5 +15,6 @@ public class NormalGate : GateBase
         base.GateHit(playerCollision);
         
         playerCollision.GateHitSuccessful(buffTypes, buffValue);
+        gameObject.SetActive(false);
     }
 }

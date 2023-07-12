@@ -35,7 +35,7 @@ public class CoinManager : MonoBehaviour
     {
         _uiManager.MoneyCollect(_mainCamera.WorldToScreenPoint(transform.position), () =>
             {
-                _moneyManager.ChangeMoney(10 * _incomeData.CurrentValue);
+                _moneyManager.ChangeMoney(25 * _incomeData.CurrentValue);
                 gameObject.SetActive(false);
             });
     }

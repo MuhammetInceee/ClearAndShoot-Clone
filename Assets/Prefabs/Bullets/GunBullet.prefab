@@ -130,6 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletTypes: 1
+  trail: {fileID: 0}
+  rb: {fileID: 5871117730204786304}
 --- !u!1 &5871117730642672673
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,5 +38,7 @@ public class SealedGate : GateBase
         {
             playerCollision.GateHitFail(gameObject);
         }
+        
+        gameObject.SetActive(false);
     }
 }

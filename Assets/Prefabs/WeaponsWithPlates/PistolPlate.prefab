@@ -7,6 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6735197591641637325}
     m_Modifications:
+    - target: {fileID: 2506193370650119190, guid: ee447c4f655bd6c4c9bc039afe901ae8,
+        type: 3}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506193370650119190, guid: ee447c4f655bd6c4c9bc039afe901ae8,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2506193370650119190, guid: ee447c4f655bd6c4c9bc039afe901ae8,
+        type: 3}
+      propertyPath: weaponLevel
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 4890048800309821438, guid: ee447c4f655bd6c4c9bc039afe901ae8,
         type: 3}
       propertyPath: m_RootOrder
@@ -65,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 4924202428124354590, guid: ee447c4f655bd6c4c9bc039afe901ae8,
         type: 3}
       propertyPath: cooldown
-      value: -144.78528
+      value: -150.9738
       objectReference: {fileID: 0}
     - target: {fileID: 5230686691839894852, guid: ee447c4f655bd6c4c9bc039afe901ae8,
         type: 3}
@@ -148,7 +163,7 @@ PrefabInstance:
     - target: {fileID: 8241447873004285446, guid: 4e8597d14752be241a189e2926298fa9,
         type: 3}
       propertyPath: m_Name
-      value: PistolPlate Variant
+      value: PistolPlate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e8597d14752be241a189e2926298fa9, type: 3}

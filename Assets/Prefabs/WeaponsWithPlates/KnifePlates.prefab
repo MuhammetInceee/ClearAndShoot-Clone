@@ -8,9 +8,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 3640615193718717555}
     m_Modifications:
     - target: {fileID: 1493524811, guid: d3446fe12f013224e85bae6c7d4c083d, type: 3}
+      propertyPath: damage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493524811, guid: d3446fe12f013224e85bae6c7d4c083d, type: 3}
+      propertyPath: fireRate
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493524811, guid: d3446fe12f013224e85bae6c7d4c083d, type: 3}
+      propertyPath: weaponLevel
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493524811, guid: d3446fe12f013224e85bae6c7d4c083d, type: 3}
       propertyPath: bulletPrefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5672340483847775364, guid: 026fd85960f246d4ea0cbfaf40b22aa1,
+        type: 3}
     - target: {fileID: 6274329840326334342, guid: d3446fe12f013224e85bae6c7d4c083d,
         type: 3}
       propertyPath: m_Name
@@ -19,7 +32,7 @@ PrefabInstance:
     - target: {fileID: 6616786685307251416, guid: d3446fe12f013224e85bae6c7d4c083d,
         type: 3}
       propertyPath: cooldown
-      value: -27.362793
+      value: -39.60816
       objectReference: {fileID: 0}
     - target: {fileID: 6654408282871467324, guid: d3446fe12f013224e85bae6c7d4c083d,
         type: 3}
@@ -110,7 +123,7 @@ PrefabInstance:
     - target: {fileID: 1360347681325857233, guid: 4e8597d14752be241a189e2926298fa9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 1360347681325857233, guid: 4e8597d14752be241a189e2926298fa9,
         type: 3}
@@ -120,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 1360347681325857233, guid: 4e8597d14752be241a189e2926298fa9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.05
+      value: 6.27
       objectReference: {fileID: 0}
     - target: {fileID: 1360347681325857233, guid: 4e8597d14752be241a189e2926298fa9,
         type: 3}

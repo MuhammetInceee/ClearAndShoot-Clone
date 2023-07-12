@@ -14,16 +14,30 @@ public class GameStateChanger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(toState == GameStates.Shoot)
-            if (other.TryGetComponent(out PlayerCollision collision)) collision.ShootStateChange();
+        {
+            if (other.TryGetComponent(out PlayerCollision collision))
+            {
+                if(collision.GetComponent<PlayerManager>().weaponList.Count > 0)
+                {
+                    collision.ShootStateChange();
+                    _gameManager.gameStates = toState;
+                }
+                else
+                {
+                    _gameManager.gameStates = GameStates.Wait;
+                    UIManager.Instance.OpenFinishRect();
+                }
+            }
+        }
                 
         if(toState == GameStates.LevelEnd)
         {
             if (other.TryGetComponent(out PlayerManager playerManager))
             {
-                print("asd");
                 playerManager.NarrowWeapons();
+                _gameManager.gameStates = toState;
             }
         }
-        _gameManager.gameStates = toState;
+        
     }
 }
