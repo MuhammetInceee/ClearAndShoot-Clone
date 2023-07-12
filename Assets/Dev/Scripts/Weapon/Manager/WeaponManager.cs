@@ -20,6 +20,7 @@ public class WeaponManager : MonoBehaviour
     private IncrementalData _globalFireRate;
     private IncrementalData _globalDamage;
     private IncrementalData _clearLevel;
+    private ParticleSystem _particleSystem;
     private bool _isReady;
     private float _lastShootTime = 0f;
 
@@ -52,6 +53,7 @@ public class WeaponManager : MonoBehaviour
         _counter = GetComponent<P3dChannelCounter>();
         _texture = GetComponent<P3dPaintableTexture>();
         _animator = GetComponent<Animator>();
+        _particleSystem = GetComponentInChildren<ParticleSystem>();
         _gameManager = GameManager.Instance;
     }
 
@@ -90,6 +92,7 @@ public class WeaponManager : MonoBehaviour
     private void Fire()
     {
         _animator.SetTrigger(Shoot1);
+        _particleSystem.Play();
         var targetObj = GetAvailableBullet();
         targetObj.GetComponent<Bullet>().damage = Damage;
         targetObj.transform.SetParent(null);
