@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 1360347681325857233, guid: 4e8597d14752be241a189e2926298fa9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.99
+      value: 5.49
       objectReference: {fileID: 0}
     - target: {fileID: 1360347681325857233, guid: 4e8597d14752be241a189e2926298fa9,
         type: 3}
@@ -171,7 +171,7 @@ PrefabInstance:
     - target: {fileID: 3893396748096897233, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
       propertyPath: weaponLevel
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3893396748096897233, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
@@ -242,7 +242,7 @@ PrefabInstance:
     - target: {fileID: 7382483734824558559, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}
       propertyPath: cooldown
-      value: -200.34402
+      value: -202.8557
       objectReference: {fileID: 0}
     - target: {fileID: 7688401054305915490, guid: 60269f93e3480de4bb12fd5cfaec32e6,
         type: 3}

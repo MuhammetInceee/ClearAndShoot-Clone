@@ -36,6 +36,7 @@ public class GateBase : MonoBehaviour
 
     private void Awake()
     {
+        playerTr = FindObjectOfType<PlayerManager>().gameObject.transform;
         _movementType =  new MovementType(movementTypes, horizontal, vertical);
         _buffType = new BuffType(buffTypes);
         InitVariables();
@@ -74,7 +75,7 @@ public class GateBase : MonoBehaviour
     {
         var sign = (buffValue > 0) ? "+" : "";
         
-        buffValueText.text = $"{sign}{buffValue}\n{_buffType.name}";
+        buffValueText.text = $"{sign}{buffValue:F2}\n{_buffType.name}";
         _gateMaterial.color = buffValue <= 0 ? Color.red : Color.green;
         _animator.SetTrigger(Hit);
     }

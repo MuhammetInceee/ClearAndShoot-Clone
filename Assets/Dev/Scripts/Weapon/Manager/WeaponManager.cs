@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -74,14 +73,10 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        Shoot();
-    }
-
+    private void Update() => Shoot();
+    
     private void Shoot()
     {
-        //TODO Refactor this if block
         if(!_isReady || (_gameManager.gameStates != GameStates.Shoot && _gameManager.gameStates != GameStates.LevelEnd)) return;
         if(!(Time.time > _lastShootTime + FireRate)) return;
         
@@ -119,6 +114,7 @@ public class WeaponManager : MonoBehaviour
         {
             _paintable.ClearAll(_texture.Texture, Color.white);
             _animator.enabled = true;
+            gameObject.layer = 8;
         });
         _isReady = true;
     }

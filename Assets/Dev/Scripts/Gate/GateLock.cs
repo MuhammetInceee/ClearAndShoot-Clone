@@ -8,18 +8,6 @@ public class GateLock : MonoBehaviour
     public List<Rigidbody> lockedChainParts;
     public Rigidbody padlock;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
     public void Unlocked()
     {
         foreach (var part in lockedChainParts)

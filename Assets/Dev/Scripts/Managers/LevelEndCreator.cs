@@ -17,30 +17,40 @@ public class LevelEndCreator : MonoBehaviour
     {
         Create();
     }
-
+    
     private void Create()
     {
-        //TODO Refactor This Code
         for (var i = 0; i < lineCount; i++)
         {
             var position = startPos.position;
-            
-            var obj1 = Instantiate(prefab, position + Vector3.forward * defZ * i, Quaternion.identity, transform);
-            var obj2 = Instantiate(prefab, position + Vector3.forward * defZ * i + Vector3.right * defX, Quaternion.identity, transform);
-            var obj3 = Instantiate(prefab, position + Vector3.forward * defZ * i + Vector3.left * defX, Quaternion.identity, transform);
+            var offset = Vector3.forward * defZ * i;
 
-            var health = 50 + (i * 10) + Random.Range(30, 39);
-            
-            var obj1Script = obj1.GetComponent<LevelEndObjects>();
-            var obj2Script = obj2.GetComponent<LevelEndObjects>();
-            var obj3Script = obj3.GetComponent<LevelEndObjects>();
-            
-            obj1Script.health = health;
-            obj1Script.UpdateText();
-            obj2Script.health = health;
-            obj2Script.UpdateText();
-            obj3Script.health = health;
-            obj3Script.UpdateText();
+            var obj1 = InstantiateObject(position + offset);
+            var obj2 = InstantiateObject(position + offset + Vector3.right * defX);
+            var obj3 = InstantiateObject(position + offset + Vector3.left * defX);
+
+            var health = CalculateHealth(i);
+        
+            SetHealthAndText(obj1, health);
+            SetHealthAndText(obj2, health);
+            SetHealthAndText(obj3, health);
         }
+    }
+
+    private GameObject InstantiateObject(Vector3 position)
+    {
+        return Instantiate(prefab, position, Quaternion.identity, transform);
+    }
+
+    private int CalculateHealth(int index)
+    {
+        return 50 + (index * 10) + Random.Range(30, 39);
+    }
+
+    private void SetHealthAndText(GameObject obj, int health)
+    {
+        var objScript = obj.GetComponent<LevelEndObjects>();
+        objScript.health = health;
+        objScript.UpdateText();
     }
 }

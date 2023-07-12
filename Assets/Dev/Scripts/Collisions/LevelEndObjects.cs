@@ -1,5 +1,3 @@
-using System;
-using System.Globalization;
 using TMPro;
 using UnityEngine;
 
@@ -32,6 +30,7 @@ public class LevelEndObjects : MonoBehaviour
             health -= bullet.damage;
             UpdateText();
             bullet.GetBackPool();
+            if(health <= 0) gameObject.SetActive(false);
         }
 
         if (other.TryGetComponent(out PlayerCollision playerCollision))
@@ -44,6 +43,6 @@ public class LevelEndObjects : MonoBehaviour
 
     internal void UpdateText()
     {
-        healthText.text = health.ToString(CultureInfo.InvariantCulture);
+        healthText.text = health.ToString("F2");
     }
 }

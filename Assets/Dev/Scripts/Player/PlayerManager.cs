@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     private P3dPaintDecal _paintDecal;
     private IncrementalData _clearLevel;
     private GameManager _gameManager;
+    private BoxCollider _boxCollider;
     
     public List<GameObject> weaponList;
     
@@ -39,6 +40,7 @@ public class PlayerManager : MonoBehaviour
     {
         _hitBetween = cleaner.GetComponent<P3dHitBetween>();
         _paintDecal = cleaner.GetComponent<P3dPaintDecal>();
+        _boxCollider = GetComponent<BoxCollider>();
         _clearLevel = Resources.Load<IncrementalData>("GlobalData/CleanLevelIncremental");
         _gameManager = GameManager.Instance;
     }
@@ -105,24 +107,9 @@ public class PlayerManager : MonoBehaviour
 
     private void JetModelChanger(int level)
     {
-        switch (level)
-        {
-            case 1:
-                level1.SetActive(true);
-                level2.SetActive(false);
-                level3.SetActive(false);
-                break;
-            case 2:
-                level1.SetActive(false);
-                level2.SetActive(true);
-                level3.SetActive(false);
-                break;
-            default:
-                level1.SetActive(false);
-                level2.SetActive(false);
-                level3.SetActive(true);
-                break;
-        }
+        level1.SetActive(level == 1);
+        level2.SetActive(level == 2);
+        level3.SetActive(level != 1 && level != 2);
     }
 
     private void WeaponPlateControl()
@@ -170,6 +157,8 @@ public class PlayerManager : MonoBehaviour
 
     internal void NarrowWeapons()
     {
+        _boxCollider.center = new Vector3(0.0069f, 0.25f, -0.17f);
+        _boxCollider.size = new Vector3(0.31f, 0.5f, 0.65f);
         defX -= 0.1f;
         SetPoses();
     }

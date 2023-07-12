@@ -89,6 +89,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee447c4f655bd6c4c9bc039afe901ae8, type: 3}
+--- !u!114 &4325364190589572702 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2506193370650119190, guid: ee447c4f655bd6c4c9bc039afe901ae8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2216068190088419912}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbbd10009bdff404492ee7012ee290dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5735571088896292892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96,6 +108,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2730900561063585134, guid: 4e8597d14752be241a189e2926298fa9,
+        type: 3}
+      propertyPath: weaponManager
+      value: 
+      objectReference: {fileID: 4325364190589572702}
     - target: {fileID: 172600953, guid: 4e8597d14752be241a189e2926298fa9, type: 3}
       propertyPath: bulletPrefab
       value: 
